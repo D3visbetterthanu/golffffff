@@ -2,8 +2,8 @@ var canvas= new fabric.Canvas("myCanvas");
 
 ballX=0;
 ballY=0;
-holeX=400;
-holeY=800;
+HoleX=800;
+HoleY=400;
 var g_obj=" ";
 var h_obj=" ";
 block_width= 5;
@@ -16,8 +16,8 @@ function load_img(){
 			g_obj.scaleToWidth(50);
 			g_obj.scaleToHeight(50);
 			g_obj.set({
-				top: holeY,
-				left: holeX,
+				top: HoleY,
+				left: HoleX,
 			});
 			canvas.add(g_obj);
 		});
@@ -46,8 +46,8 @@ function my_keydown(e)
 {
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
-	if((ballX==holeX)&&(ballY==holeY)){
-		canvas.remove(g_obj);
+	if((ballX==HoleX)&&(ballY==HoleY)){
+		canvas.remove(h_obj);
 		document.getElementById("hd3").innerHTML="GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
 		document.getElementById("myCanvas").style.borderColor="red";
 	}
@@ -76,21 +76,21 @@ function my_keydown(e)
 	
 	function up()
 	{
-		if(ballY>=0){
-			ballY= ballY-HoleY;
+		if(ballY>=5){
+			ballY= ballY-block_height;
 			console.log("When up arrow is pressed x="+ballX+" y=" +ballY);
-			canvas.remove(g_obj);
-			load_img();
+			canvas.remove(h_obj);
+			new_image();
 		}
 	}
 
 	function down()
 	{
 		if(ballY<=450){
-			ballY= ballY+HoleY;
+			ballY= ballY+block_height;
 			console.log("When down arrow is pressed x="+ballX+" y=" +ballY);
-			canvas.remove(g_obj);
-			load_img();
+			canvas.remove(h_obj);
+			new_image();
 		}
 	}
 
@@ -98,10 +98,10 @@ function my_keydown(e)
 	{
 		if(ballX >5)
 		{
-			ballX= ballY-HoleY;
+			ballX= ballX-block_width;
 			console.log("When left arrow is pressed x="+ballX+" y=" +ballY);
-			canvas.remove(g_obj);
-			load_img();
+			canvas.remove(h_obj);
+			new_image();
 		}
 	}
 
@@ -109,10 +109,10 @@ function my_keydown(e)
 	{
 		if(ballX <=1050)
 		{
-			ballX= ballY-HoleY;
+			ballX= ballX+block_width;
 			console.log("When right arrow is pressed x="+ballX+" y=" +ballY);
-			canvas.remove(g_obj);
-			load_img();
+			canvas.remove(h_obj);
+			new_image();
 		}
 	}
 	
